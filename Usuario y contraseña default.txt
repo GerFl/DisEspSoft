@@ -1,2 +1,0 @@
-Usuario: 1
-Contraseña: 1

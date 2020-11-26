@@ -263,7 +263,7 @@ public class GuardarUser extends javax.swing.JFrame {
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente (1) (1).png"))); // NOI18N
-        jMenuItem2.setText(" Cleintes");
+        jMenuItem2.setText("Clientes");
         jMenuItem2.setToolTipText("Nuevo cliente");
         jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +276,7 @@ public class GuardarUser extends javax.swing.JFrame {
         GenerarVentas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         GenerarVentas.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         GenerarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-document.png"))); // NOI18N
-        GenerarVentas.setText(" Generar Venta");
+        GenerarVentas.setText("Generar Venta");
         GenerarVentas.setToolTipText("Nueva venta");
         GenerarVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         GenerarVentas.addActionListener(new java.awt.event.ActionListener() {

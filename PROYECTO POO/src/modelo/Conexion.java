@@ -10,7 +10,7 @@ public class Conexion {
     public  Conexion() {
         try{
             
-            con=DriverManager.getConnection("jdbc:ucanaccess://C:\\Users\\ALMA LARA\\Documents\\NetBeansProjects\\PROYECTO POO\\Base de datos\\BD_Videojuegos.accdb");
+            con=DriverManager.getConnection("jdbc:ucanaccess://Base de datos\\Database1.accdb");
             Statement atStatement=con.createStatement();
             
             

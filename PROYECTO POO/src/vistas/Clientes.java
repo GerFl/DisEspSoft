@@ -54,11 +54,11 @@ public class Clientes extends javax.swing.JInternalFrame {
             Conexion conect1 = new Conexion();
             con1 = conect1.getConnection();
             String dts[] = new String[4];
-            String sql = "select * from clientes";
+            String sql = "select * from Cliente";
             Statement st = con1.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                dts[0] = rs.getString("id_cliente");
+                dts[0] = rs.getString("Id_cliente");
                 dts[1] = rs.getString("nom_cliente");
                 dts[2] = rs.getString("dire_cliente");
                 dts[3] = rs.getString("tel_cliente");
@@ -295,10 +295,10 @@ public class Clientes extends javax.swing.JInternalFrame {
         vdire=this.cdire.getText();
         vtel=this.ctel.getText();
         
-        campos="id_cliente, nom_cliente, dire_cliente, tel_cliente";
+        campos="Id_cliente, nom_cliente, dire_cliente, tel_cliente";
         valores="'"+vidcliente+"','"+vnom+"','"+vdire+"','"+vtel+"'";
         negocliente nc=new negocliente();
-        nc.guardar("clientes", campos, valores);
+        nc.guardar("Cliente", campos, valores);
         
         limpiar();
            guardar.setEnabled(true);

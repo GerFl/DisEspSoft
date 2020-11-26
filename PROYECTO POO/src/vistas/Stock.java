@@ -1,6 +1,9 @@
 package vistas;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,34 +21,34 @@ public class Stock extends javax.swing.JInternalFrame {
         guardar.setEnabled(false);
         nuevo.setEnabled(true);
         desabilitar();
-        TextPrompt nuevo =new TextPrompt(" ", codprod);
+        
         
     }
     
   
     public void limpiar()
     {
-        codprod.setText("");
-        nomprod.setText("");
-        ex.setText("");
-        cpp.setText("");
+        
+        nombrevideojuego.setText("");
+        existencia.setText("");
+        preciopublico.setText("");
        
     }
     
     public void desabilitar(){
-        codprod.setEnabled(false);
-        nomprod.setEnabled(false);
-        ex.setEnabled(false);
-        cpp.setEnabled(false);
+        
+        nombrevideojuego.setEnabled(false);
+        existencia.setEnabled(false);
+        preciopublico.setEnabled(false);
         
         
     }
     
     public void habilitar(){
-        codprod.setEnabled(true);
-        nomprod.setEnabled(true);
-        ex.setEnabled(true);
-        cpp.setEnabled(true);
+        
+        nombrevideojuego.setEnabled(true);
+        existencia.setEnabled(true);
+        preciopublico.setEnabled(true);
         
     }
     
@@ -56,15 +59,15 @@ public class Stock extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        codprod = new javax.swing.JTextField();
+        codigo_producto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        nomprod = new javax.swing.JTextField();
+        nombrevideojuego = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        ex = new javax.swing.JTextField();
+        existencia = new javax.swing.JTextField();
         guardar = new javax.swing.JButton();
         nuevo = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        cpp = new javax.swing.JTextField();
+        preciopublico = new javax.swing.JTextField();
 
         setClosable(true);
         setForeground(java.awt.Color.black);
@@ -83,16 +86,16 @@ public class Stock extends javax.swing.JInternalFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/barcode.png"))); // NOI18N
         jLabel2.setText(" CODIGO DEL PRODUCTO");
 
-        codprod.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        codprod.setToolTipText("Codigo generado por la base de datos");
-        codprod.addActionListener(new java.awt.event.ActionListener() {
+        codigo_producto.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        codigo_producto.setToolTipText("Codigo generado por la base de datos");
+        codigo_producto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codprodActionPerformed(evt);
+                codigo_productoActionPerformed(evt);
             }
         });
-        codprod.addKeyListener(new java.awt.event.KeyAdapter() {
+        codigo_producto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                codprodKeyTyped(evt);
+                codigo_productoKeyTyped(evt);
             }
         });
 
@@ -101,11 +104,11 @@ public class Stock extends javax.swing.JInternalFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit-document.png"))); // NOI18N
         jLabel3.setText(" NOMBRE DEL VIDEOJUEGO");
 
-        nomprod.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        nomprod.setToolTipText("Nombre");
-        nomprod.addActionListener(new java.awt.event.ActionListener() {
+        nombrevideojuego.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        nombrevideojuego.setToolTipText("Nombre");
+        nombrevideojuego.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomprodActionPerformed(evt);
+                nombrevideojuegoActionPerformed(evt);
             }
         });
 
@@ -114,16 +117,16 @@ public class Stock extends javax.swing.JInternalFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inventario2 (1) (1).png"))); // NOI18N
         jLabel4.setText(" EXISTENCIA");
 
-        ex.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        ex.setToolTipText("Stock");
-        ex.addActionListener(new java.awt.event.ActionListener() {
+        existencia.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        existencia.setToolTipText("Stock");
+        existencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exActionPerformed(evt);
+                existenciaActionPerformed(evt);
             }
         });
-        ex.addKeyListener(new java.awt.event.KeyAdapter() {
+        existencia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                exKeyTyped(evt);
+                existenciaKeyTyped(evt);
             }
         });
 
@@ -156,16 +159,16 @@ public class Stock extends javax.swing.JInternalFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/precio.png"))); // NOI18N
         jLabel5.setText(" PRECIO AL PUBLICO");
 
-        cpp.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        cpp.setToolTipText("Precio");
-        cpp.addActionListener(new java.awt.event.ActionListener() {
+        preciopublico.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        preciopublico.setToolTipText("Precio");
+        preciopublico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cppActionPerformed(evt);
+                preciopublicoActionPerformed(evt);
             }
         });
-        cpp.addKeyListener(new java.awt.event.KeyAdapter() {
+        preciopublico.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                cppKeyTyped(evt);
+                preciopublicoKeyTyped(evt);
             }
         });
 
@@ -189,10 +192,10 @@ public class Stock extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nomprod)
-                            .addComponent(codprod)
-                            .addComponent(ex, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cpp, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(nombrevideojuego)
+                            .addComponent(codigo_producto)
+                            .addComponent(existencia, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(preciopublico, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
@@ -201,22 +204,22 @@ public class Stock extends javax.swing.JInternalFrame {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(codprod))
+                    .addComponent(codigo_producto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nomprod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombrevideojuego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(existencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(92, 92, 92))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cpp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(preciopublico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nuevo)
@@ -231,15 +234,32 @@ public class Stock extends javax.swing.JInternalFrame {
         
         String vcodprod, vnomprod, vex, vpreciop, campos, valores, vcod;
         
-        vnomprod=this.nomprod.getText();
-        vex=this.ex.getText();
-        vpreciop=this.cpp.getText();
-        vcod=this.codprod.getText();
+        vnomprod=this.nombrevideojuego.getText();
+        vex=this.existencia.getText();
+        vpreciop=this.preciopublico.getText();
         
-        campos="Codigo_producto, Nombre_producto, Existencia, precio_publico";
-        valores="'"+vcod+"','"+vnomprod+"','"+vex+"','"+vpreciop+"'";
-        negostock ns=new negostock();
-        ns.guardar("Stock", campos, valores);
+        Connection con=null;
+        PreparedStatement pst=null;
+        ResultSet rs=null;
+
+        try{
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            con=DriverManager.getConnection("jdbc:ucanaccess://Base de datos\\Database1.accdb");
+            String setcosto="INSERT INTO Stock (codigo_producto,nombre_producto,existencia,precio_publico) VALUES (?,?,?,?)";
+            pst=con.prepareStatement(setcosto);
+            pst.setString(1, codigo_producto.getText());
+            pst.setString(2, nombrevideojuego.getText());
+            pst.setString(3, existencia.getText());
+            pst.setString(4, preciopublico.getText());
+            int res = pst.executeUpdate();
+            if (rs.next()){
+                JOptionPane.showMessageDialog(null,"Producto guardado.");
+            }else{
+                JOptionPane.showMessageDialog(this, "¡USUARIO O CONTRASEÑA INCORRECTOS!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }catch(HeadlessException | ClassNotFoundException | SQLException e){
+            JOptionPane.showMessageDialog(null,e);
+        }
       
         
         limpiar();
@@ -260,49 +280,49 @@ public class Stock extends javax.swing.JInternalFrame {
         guardar.setEnabled(true);
     }//GEN-LAST:event_nuevoActionPerformed
 
-    private void exActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exActionPerformed
+    private void existenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existenciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_exActionPerformed
+    }//GEN-LAST:event_existenciaActionPerformed
 
-    private void exKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_exKeyTyped
+    private void existenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_existenciaKeyTyped
         char c = evt.getKeyChar();
         if(c<'0'||c>'9') evt.consume();
-    }//GEN-LAST:event_exKeyTyped
+    }//GEN-LAST:event_existenciaKeyTyped
 
-    private void cppActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cppActionPerformed
+    private void preciopublicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preciopublicoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cppActionPerformed
+    }//GEN-LAST:event_preciopublicoActionPerformed
 
-    private void cppKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cppKeyTyped
+    private void preciopublicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_preciopublicoKeyTyped
         char c = evt.getKeyChar();
         if(c<'0'||c>'9') evt.consume();
-    }//GEN-LAST:event_cppKeyTyped
+    }//GEN-LAST:event_preciopublicoKeyTyped
 
-    private void nomprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomprodActionPerformed
+    private void nombrevideojuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombrevideojuegoActionPerformed
+    }/*
+    }                 guardar//GEN-LAST:event_nombrevideojuegoActionPerformed
+*/
+    private void codigo_productoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigo_productoKeyTyped
         
-    }//GEN-LAST:event_nomprodActionPerformed
+    }//GEN-LAST:event_codigo_productoKeyTyped
 
-    private void codprodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codprodKeyTyped
-        char c = evt.getKeyChar();
-        if(c<'0'||c>'9') evt.consume();
-    }//GEN-LAST:event_codprodKeyTyped
+    private void codigo_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigo_productoActionPerformed
+        codigo_producto.transferFocus();
+    }//GEN-LAST:event_codigo_productoActionPerformed
 
-    private void codprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codprodActionPerformed
-       codprod.transferFocus();
-    }//GEN-LAST:event_codprodActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField codprod;
-    private javax.swing.JTextField cpp;
-    private javax.swing.JTextField ex;
+    private javax.swing.JTextField codigo_producto;
+    private javax.swing.JTextField existencia;
     private javax.swing.JButton guardar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField nomprod;
+    private javax.swing.JTextField nombrevideojuego;
     private javax.swing.JButton nuevo;
+    private javax.swing.JTextField preciopublico;
     // End of variables declaration//GEN-END:variables
 
     static class Interfaz {
