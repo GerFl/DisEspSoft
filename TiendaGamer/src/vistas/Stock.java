@@ -244,8 +244,8 @@ public class Stock extends javax.swing.JInternalFrame {
 
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            con=DriverManager.getConnection("jdbc:ucanaccess://Base de datos\\Database1.accdb");
-            String setcosto="INSERT INTO Stock (codigo_producto,nombre_producto,existencia,precio_publico) VALUES (?,?,?,?)";
+            con=DriverManager.getConnection("jdbc:ucanaccess://Base de datos\\BD_Videojuegos.accdb");
+            String setcosto="INSERT INTO Stock (Codigo_producto,Nombre_producto,Existencia,precio_publico) VALUES (?,?,?,?)";
             pst=con.prepareStatement(setcosto);
             pst.setString(1, codigo_producto.getText());
             pst.setString(2, nombrevideojuego.getText());

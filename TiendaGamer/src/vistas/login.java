@@ -162,8 +162,8 @@ public class login extends javax.swing.JFrame {
 
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-            con=DriverManager.getConnection("jdbc:ucanaccess://Base de datos\\Database1.accdb");
-            String sql="select * from firstlogin where Usuario='"+user.getText()+"' and Contraseña='"+contraseña.getText()+"'";
+            con=DriverManager.getConnection("jdbc:ucanaccess://Base de datos\\BD_Videojuegos.accdb");
+            String sql="select * from login where Usuario='"+user.getText()+"' and contraseña='"+contraseña.getText()+"'";
             pst=con.prepareStatement(sql);
             rs=pst.executeQuery();
             if (rs.next()){
