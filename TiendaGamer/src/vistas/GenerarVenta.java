@@ -388,21 +388,28 @@ public class GenerarVenta extends javax.swing.JInternalFrame {
 
     private void btngenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngenerarActionPerformed
         
-        
+        for(int i=0;i<tablaventa.getRowCount();i++){   
+         String campouno=(String) tablaventa.getValueAt(i,0);
+         String campodos=(String) tablaventa.getValueAt(i,1);
+         String campotres=(String) tablaventa.getValueAt(i,2);
         String vccod, vccan, vcprecio, campos, valores, vtotal;
-        
-        vccod=this.codigoproducto.getText();
-        vccan=this.cantidadproducto.getText();
-        vcprecio=this.precioproducto.getText();
-        vtotal=this.totalpagar.getText();
-       
         campos="Codigo_producto, Cantidad, Precio, Total_pagar";
-        valores="'"+vccod+"','"+vccan+"','"+vcprecio+"','"+vtotal+"'";
+        vtotal=this.totalpagar.getText();
+        valores="'"+campouno+"','"+campodos+"','"+campotres+"','"+vtotal+"'";
         negogenerarventa n=new negogenerarventa();
         n.guardar("Detalle", campos, valores);
+        }
+        
+        
+        /*vccod=this.codigoproducto.getText();
+        vccan=this.cantidadproducto.getText();
+        vcprecio=this.precioproducto.getText();
+        vtotal=this.totalpagar.getText();*/
+       
+        
         
         limpiar();
-        //generar.setEnabled(true);
+           //generar.setEnabled(true);
     }//GEN-LAST:event_btngenerarActionPerformed
 
     private void codigoproductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_codigoproductoKeyTyped
@@ -495,13 +502,9 @@ public class GenerarVenta extends javax.swing.JInternalFrame {
         campoPruebasCosto.setText("0");
         for(int i=0;i<tablaventa.getRowCount();i++){
             String valor=(String) tablaventa.getValueAt(i,2);
-
             double valordos=(Double.parseDouble(valor));
-
             double suma = (Double.parseDouble(campoPruebasCosto.getText()));
-
             campoPruebasCosto.setText(Double.toString(suma+valordos));
-
         }
         
         totalpagar.setText(campoPruebasCosto.getText());
